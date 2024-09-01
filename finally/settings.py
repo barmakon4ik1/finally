@@ -10,25 +10,44 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
+import os
+from datetime import timedelta
 from pathlib import Path
+from environ import Env
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+env = Env()
+Env.read_env(BASE_DIR / '.env')
+SECRET_KEY = env.str('SECRET_KEY')
+DEBUG = env.bool('DEBUG', default=False)
+ALLOWED_HOSTS = env.list('ALLOWED_HOSTS')
 
+AUTH_USER_MODEL = 'housing.User'
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
+REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+    'PAGE_SIZE': 3,  # Размер страницы по умолчанию
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-fdlh_yfk=hte@u8v_3+8fe@kx98#=bkb92_sx3=hz(z@3+pa3e"
+    # Simple JWT
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
 
-ALLOWED_HOSTS = []
+}
 
-
-# Application definition
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60), # срок жизни (5 мин)
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1), # срок жизни рефреша (1 день)
+    'ROTATE_REFRESH_TOKENS': True, # будет ли создаваться рефреш при обновлении рефреша?
+    'BLACKLIST_AFTER_ROTATION': True, # старый рефреш в черный список?
+    'AUTH_HEADER_TYPES': ('Bearer',), # определяет тип заголовка при передаче токена
+}
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -38,6 +57,12 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'housing.apps.HousingConfig',
+    'rest_framework',
+    'django_extensions',
+    'drf_yasg',
+    'rest_framework.authtoken',
+    'django_filters',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +73,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'housing.middleware.JWTAuthenticationMiddleware',
 ]
 
 ROOT_URLCONF = "finally.urls"
@@ -75,12 +101,24 @@ WSGI_APPLICATION = "finally.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+if env.bool('MYSQL', default=False):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': env.str('DB_NAME'),
+            'USER': env.str('DB_USER'),
+            'PASSWORD': env.str('DB_PASSWORD'),
+            'HOST': env.str('DB_HOST'),
+            'PORT': env.str('DB_PORT'),
+        }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 
 # Password validation
@@ -105,7 +143,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = "en-us"
+LANGUAGE_CODE = "ru"
 
 TIME_ZONE = "UTC"
 
