@@ -5,13 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c82a86fd-f550-4046-902c-46000b96a0cc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/housing/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/finally/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/finally/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finally/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/finally/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finally/wsgi.py" beforeDir="false" afterPath="$PROJECT_DIR$/finally/wsgi.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/housing/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/housing/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/housing/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/housing/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/housing/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/housing/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/housing/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/housing/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/housing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/housing/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -94,7 +92,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1725196697436</updated>
-      <workItem from="1725196715773" duration="4197000" />
+      <workItem from="1725196715773" duration="7498000" />
     </task>
     <servers />
   </component>

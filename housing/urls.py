@@ -21,20 +21,20 @@ router.register(r'housing', HousingViewSet)
 urlpatterns = [
 
     # BasicAuthentication / TokenAuthentication
-    # path('protected/', ProtectedDataView.as_view(), name='protected-data'),
-    # # path('api-tocken-auth/', obtain_auth_token, name='api-tocken-auth'),
-    #
-    # path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
-    # path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
-    #
+    path('protected/', ProtectedDataView.as_view(), name='protected-data'),
+    path('api-tocken-auth/', obtain_auth_token, name='api-tocken-auth'),
+
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+
     # # Simple JWT:
-    # path('api/login/', LoginView.as_view(), name='login'),
-    # path('api/logout/', LogoutView.as_view(), name='logout'),
-    # path('api/register/', RegisterView.as_view(), name='register'),
-    # path('api/', ReadOnlyOrAuthenticatedView.as_view(), name='admin'),
-    #
-    #
-    #
+    path('api/login/', LoginView.as_view(), name='login'),
+    path('api/logout/', LogoutView.as_view(), name='logout'),
+    path('api/register/', RegisterView.as_view(), name='register'),
+    path('api/', ReadOnlyOrAuthenticatedView.as_view(), name='admin'),
+
+
+
     # re_path(r'^books/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$', books_by_date_view, name='books-by-date'),
     # path('user-book/', UserBookListView.as_view(), name='user-book'),
     # # path('books/', BookListCreateView.as_view(), name='book-list-create'),
