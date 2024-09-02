@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'housing.apps.HousingConfig',
     'rest_framework',
-    'django_extensions',
     'drf_yasg',
     'rest_framework.authtoken',
     'django_filters',

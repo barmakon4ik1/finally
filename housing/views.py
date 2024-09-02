@@ -39,10 +39,13 @@ from rest_framework import mixins, viewsets
 from django.db.models import Count
 
 
-# ModelViewSet предоставляет полный набор стандартных действий для модели,
-# включая создание, чтение, обновление и удаление CRUDՅ. Он объединяет
-# функциональность всех миксинов: CreateModelMixin, RetrieveModelMixin,
-# UpdateModelMixin, DestroyModelMixin, и ListModelMixin
+"""ModelViewSet предоставляет полный набор стандартных действий для модели,
+включая создание, чтение, обновление и удаление CRUDՅ. Он объединяет
+функциональность всех миксинов: CreateModelMixin, RetrieveModelMixin,
+UpdateModelMixin, DestroyModelMixin, и ListModelMixin"""
+
+
+# Viewset для представления отображения объектов
 class HousingViewSet(viewsets.ModelViewSet):
     queryset = Housing.objects.all()
     serializer_class = HousingSerializer

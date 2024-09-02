@@ -5,10 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c82a86fd-f550-4046-902c-46000b96a0cc" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/finally.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/finally.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/finally/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/finally/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/housing/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/housing/serializers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/housing/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/housing/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/housing/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/housing/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/housing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/housing/views.py" afterDir="false" />
     </list>
@@ -27,9 +29,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2lTGYBynnIIrmrw0iXYgn57olOw" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -42,6 +44,7 @@
   "keyToString": {
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "E:/my_projects/finally",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -93,6 +96,7 @@
       <option name="presentableId" value="Default" />
       <updated>1725196697436</updated>
       <workItem from="1725196715773" duration="7498000" />
+      <workItem from="1725255157239" duration="3926000" />
     </task>
     <servers />
   </component>
