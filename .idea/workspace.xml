@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c82a86fd-f550-4046-902c-46000b96a0cc" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finally/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/finally/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/housing/managers.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/housing/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/housing/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/housing/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/housing/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/housing/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/housing/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/housing/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/housing/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,19 +34,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "E:/my_projects/finally",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/my_projects/finally&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="finally" type="Python.DjangoServer" factoryName="Django server">
       <module name="finally" />
@@ -96,6 +91,7 @@
       <updated>1725196697436</updated>
       <workItem from="1725196715773" duration="7498000" />
       <workItem from="1725255157239" duration="9091000" />
+      <workItem from="1725362020959" duration="2704000" />
     </task>
     <servers />
   </component>

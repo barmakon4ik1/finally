@@ -3,6 +3,8 @@ from django.contrib.auth.models import PermissionsMixin, UserManager
 from django.core.validators import MinLengthValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from rest_framework.exceptions import ValidationError
+from .managers import CustomUserManager  # Импорт менеджера пользователей
 from housing.variables import *
 
 
@@ -57,9 +59,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     phone = models.CharField(max_length=15, null=True, blank=True)
     is_staff = models.BooleanField(default=False,)
     is_active = models.BooleanField(default=True)
-    date_joined = models.DateTimeField(
-        name="registered", auto_now_add=True
-    )
+    date_joined = models.DateTimeField(auto_now_add=True)
     last_login = models.DateTimeField(null=True, blank=True)
     updated_at = models.DateTimeField(auto_now=True)
     deleted_at = models.DateTimeField(null=True, blank=True)
@@ -78,7 +78,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         "position",
     ]
 
-    objects = UserManager()
+    objects = CustomUserManager()
 
     def __str__(self):
         return f"{self.last_name} {self.first_name}"
@@ -169,7 +169,7 @@ class Housing(models.Model):
 
 
 class Advert(models.Model):
-    object_name = models.OneToOneField(
+    housing = models.ForeignKey(
         Housing,
         on_delete=models.SET_NULL,
         null=True,
@@ -192,3 +192,80 @@ class Advert(models.Model):
         verbose_name_plural = _('Adverts')
         verbose_name = _('Advert')
         ordering = ['-created_at']
+
+
+"""
+Модель бронирования объявлений
+
+Содержит поля с какого по какое число забронировано и ссылки
+на объект и пользователя, забронировавшего объект
+is_active - флаг состояния, что объект уже забронирован 
+"""
+
+
+class Booking(models.Model):
+    housing = models.OneToOneField(
+        'Housing',
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='bookings'
+    )
+    booking_date_start = models.DateField(_('Booking start date'))
+    booking_date_end = models.DateField(_('Booking end date'))
+    user = models.ForeignKey(
+        User,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='bookings'
+    )
+    is_active = models.BooleanField(default=True)
+
+    # валидации полей модели перед сохранением:
+    def clean(self):
+        # Проверка, что дата окончания позже даты начала
+        if self.booking_date_end <= self.booking_date_start:
+            raise ValidationError({
+                'booking_date_end': _('The end date must be after the start date.')
+            })
+
+    def save(self, *args, **kwargs):
+        # Вызов clean() перед сохранением объекта
+        self.clean()
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return f'Booking for {self.housing} from {self.booking_date_start} to {self.booking_date_end}'
+
+
+"""
+Модель для отзывов
+"""
+
+
+class Review(models.Model):
+    booking = models.ForeignKey(
+        Booking,
+        on_delete=models.SET_NULL,
+        null=True,
+        related_name='reviews'
+    )
+    user = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='reviews'
+    )
+    rating = models.IntegerField()
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'{self.text}'
+
+    class Meta:
+        verbose_name_plural = _('Reviews')
+        verbose_name = _('Review')
+        ordering = ['-created_at']
+        unique_together = (('booking', 'user'),)
+        get_latest_by = 'created_at'
+
+
