@@ -54,9 +54,19 @@ class HousingViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
-    def get_queryset(self):
-        # извлечение текущего аутентифицированного пользователя
-        return Housing.objects.filter(owner=self.request.user)
+    # def get_queryset(self):
+    #     # извлечение текущего аутентифицированного пользователя
+    #     return Housing.objects.filter(owner=self.request.user)
+
+
+# Viewset для представления отображения объявления
+class AdvertsViewSet(viewsets.ModelViewSet):
+    queryset = Advert.objects.all()
+    serializer_class = AdvertSerializer
+    permission_classes = [IsAuthenticated]
+
+    # def perform_create(self, serializer):
+    #     serializer.save(owner=self.request.user)
 
 
 # Simple JWT

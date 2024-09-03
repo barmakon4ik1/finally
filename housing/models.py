@@ -139,7 +139,7 @@ class Housing(models.Model):
         choices=HousingType.choices,
         default=HousingType.H
     )
-    address = models.OneToOneField(
+    address = models.ForeignKey(
         Address,
         on_delete=models.SET_NULL,
         null=True,

@@ -11,7 +11,15 @@ import re
 from django.utils import timezone
 
 
+class AddressSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Address
+        fields = ['country', 'city', 'street', 'house_number', 'postal_code']
+
+
 class HousingSerializer(serializers.ModelSerializer):
+    address = AddressSerializer()
+
     class Meta:
         model = Housing
         fields = '__all__'
@@ -27,12 +35,6 @@ class HousingCreateUpdateSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         validated_data['created_at'] = timezone.now()
         return super().create(validated_data)
-
-
-class AddressSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Address
-        fields = '__all__'
 
 
 """

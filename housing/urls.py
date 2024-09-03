@@ -3,7 +3,6 @@ from rest_framework.authtoken.views import obtain_auth_token
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rest_framework.routers import DefaultRouter
 from .views import *
-from housing.views import *
 from django.contrib import admin
 from rest_framework import permissions
 from drf_yasg.views import get_schema_view
@@ -22,6 +21,7 @@ URL-маршрутов для ваших ViewSet. Это удобный инст
 API корня."""
 router = DefaultRouter()
 router.register(r'housing', HousingViewSet)
+router.register(r'adverts', AdvertsViewSet)
 
 schema_view = get_schema_view(
     openapi.Info(
